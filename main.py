@@ -6,6 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 import random
 import sys 
+import selenium
 
 def proxy_scraping(link):
 
@@ -25,6 +26,7 @@ def proxy_scraping(link):
                         DATA.append(proxy)
         else:
             IP = td.string
+
     return DATA
 
 def all_number(value):
@@ -42,7 +44,7 @@ def watching_video(PROXY,link,duration):
     driver = webdriver.Chrome("chromedriver",options=chrome_options)
     
     driver.get(link)
-    time.sleep(10)
+    time.sleep(5)
     player = driver.find_element(By.ID,"player")
     player.click()
     time.sleep(duration)
@@ -64,7 +66,7 @@ if __name__ == "__main__":
             watching_video(PROXY,link,TIME)
             counter += 1
             print(f"\n[+][{counter}]",end="")
-        except:
+        except selenium.common.exceptions.WebDriverException:
             pass 
     
 

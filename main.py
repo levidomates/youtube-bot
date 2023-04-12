@@ -62,7 +62,7 @@ if __name__ == "__main__":
             page = random.randint(1,450)
             DATA = proxy_scraping(f"https://www.freeproxy.world/?type=&anonymity=&country=&speed=&port=&page={page}")
             PROXY = random.choice(DATA)
-            TIME = random.randint(0,10)*60
+            TIME = random.randint(3,duration)*60
             watching_video(PROXY,link,TIME)
             counter += 1
             print(f"\n[+][{counter}]",end="")
